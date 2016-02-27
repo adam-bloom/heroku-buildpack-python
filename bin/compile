@@ -176,6 +176,43 @@ bpwatch start restore_cache
 
 bpwatch stop restore_cache
 
+# Install SWIG
+if [ ! -d $CACHE_DIR/swig ]; then
+  cd $BUILD_DIR
+  echo "-----> Fetching and installing SWIG 2"
+  curl -O https://s3.amazonaws.com/guybowden/swig.tar.gz >/dev/null 2>&1
+  echo "-----> Installing ..."
+  tar xzvf swig.tar.gz >/dev/null 2>&1
+  mv swig $CACHE_DIR/swig
+  rm swig.tar.gz
+  echo "SWIG installed" | indent
+fi
+
+mkdir -p .paybox
+cp -R $CACHE_DIR/swig .paybox
+
+echo "updating path..." | indent
+PATH=$PATH:$BUILD_DIR/.paybox/swig/bin/
+export PATH
+echo $PATH | indent
+echo "setting SWIG_LIB environment var"
+export SWIG_LIB=$BUILD_DIR/.paybox/swig/share/swig/2.0.5/
+
+# Install libgmp3-dev
+if [ ! -d $CACHE_DIR/gmp ]; then
+  cd $BUILD_DIR
+  echo "-----> Fetching, building, and installing libgmp3-dev"
+  curl -O http://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_5.1.3+dfsg.orig.tar.gz >/dev/null 2>&1
+  echo "-----> Installing ..."
+  tar xzvf gmp_5.1.3+dfsg.orig.tar.gz >/dev/null 2>&1
+  cd gmp_5.1.3+dfsg
+  ./configure
+  make
+  make install
+fi
+
+
+
 set +e
 # Create set-aside `.heroku` folder.
 mkdir .heroku &> /dev/null
