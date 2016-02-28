@@ -191,10 +191,10 @@ bpwatch stop restore_cache
 # mkdir -p .paybox
 # cp -R $CACHE_DIR/swig .paybox
 
-echo "updating path..." | indent
-PATH=$PATH:$BUILD_DIR/.apt/usr/bin/
-export PATH
-echo $PATH | indent
+# echo "updating path..." | indent
+# PATH=$PATH:$BUILD_DIR/.apt/usr/bin/
+# export PATH
+# echo $PATH | indent
 #echo "setting SWIG_LIB environment var"
 #export SWIG_LIB=$BUILD_DIR/.paybox/swig/share/swig/2.0.5/
 
