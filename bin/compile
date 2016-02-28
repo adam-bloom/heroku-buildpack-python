@@ -224,6 +224,13 @@ set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
 
+#fix include paths
+set-env CPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPATH'
+#set-env CPPPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPPPATH'
+#set-env INCLUDE_PATH '/app/.apt/usr/include/x86_64-linux-gnu:$INCLUDE_PATH'
+
+
+
 # Install Python.
 source $BIN_DIR/steps/python
 
@@ -258,11 +265,6 @@ set-env PYTHONUNBUFFERED true
 set-env PYTHONHOME /app/.heroku/python
 set-env LIBRARY_PATH '/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LIBRARY_PATH'
 set-env LD_LIBRARY_PATH '/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LD_LIBRARY_PATH'
-
-#fix include paths
-set-env CPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPATH'
-set-env CPPPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPPPATH'
-set-end INCLUDE_PATH '/app/.apt/usr/include/x86_64-linux-gnu:$INCLUDE_PATH'
 
 
 set-default-env LANG en_US.UTF-8
