@@ -198,6 +198,11 @@ echo $PATH | indent
 echo "setting SWIG_LIB environment var"
 export SWIG_LIB=$BUILD_DIR/.apt/usr/share/swig2.0
 
+#fix include paths
+export CPATH=/app/.apt/usr/include/x86_64-linux-gnu:$CPATH
+export CPPPATH=/app/.apt/usr/include/x86_64-linux-gnu:$CPPPATH
+#set-env INCLUDE_PATH '/app/.apt/usr/include/x86_64-linux-gnu:$INCLUDE_PATH'
+
 # # Install libgmp3-dev
 # if [ ! -d $CACHE_DIR/gmp ]; then
 #   cd $BUILD_DIR
@@ -223,11 +228,6 @@ mkdir .heroku &> /dev/null
 set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
-
-#fix include paths
-export CPATH=/app/.apt/usr/include/x86_64-linux-gnu:$CPATH
-#set-env CPPPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPPPATH'
-#set-env INCLUDE_PATH '/app/.apt/usr/include/x86_64-linux-gnu:$INCLUDE_PATH'
 
 
 
