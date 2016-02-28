@@ -6,6 +6,10 @@ puts-cmd "pip install -r requirements.txt"
 
 set +e
 printenv > /app/env.txt
+echo Showing contents of $BUILD_DIR
+echo $BUILD_DIR
+ls $BUILD_DIR
+ls -R $BUILD_DIR/.apt
 /app/.heroku/python/bin/pip install -r requirements.txt --exists-action=w --src=./.heroku/src --log=/app/pip.log --disable-pip-version-check --no-cache-dir 2>&1 | tee $WARNINGS_LOG | cleanup | indent
 PIP_STATUS="${PIPESTATUS[0]}"
 set -e
