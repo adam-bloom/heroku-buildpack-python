@@ -203,6 +203,9 @@ export CPATH=$BUILD_DIR/.apt/usr/include/x86_64-linux-gnu:$CPATH
 export CPPPATH=$BUILD_DIR/.apt/usr/include/x86_64-linux-gnu:$CPPPATH
 #set-env INCLUDE_PATH '/app/.apt/usr/include/x86_64-linux-gnu:$INCLUDE_PATH'
 
+#distutils logging
+export DISTUTILS_DEBUG=1
+
 set +e
 # Create set-aside `.heroku` folder.
 mkdir .heroku &> /dev/null
