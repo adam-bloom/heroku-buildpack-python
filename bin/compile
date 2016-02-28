@@ -259,8 +259,12 @@ set-env PYTHONHOME /app/.heroku/python
 set-env LIBRARY_PATH '/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LIBRARY_PATH'
 set-env LD_LIBRARY_PATH '/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LD_LIBRARY_PATH'
 
-#fix Cpath
+#fix include paths
 set-env CPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPATH'
+set-env CPPPATH '/app/.apt/usr/include/x86_64-linux-gnu:$CPPPATH'
+set-end INCLUDE_PATH '/app/.apt/usr/include/x86_64-linux-gnu:$INCLUDE_PATH'
+
+
 set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/
